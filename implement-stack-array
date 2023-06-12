@@ -1,0 +1,103 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int stack[5];
+int top = -1;
+
+void push()
+{
+    int x;
+    printf("Enter Data: ");
+    scanf("%d", &x);
+    
+    if (top == 4)
+    {
+        printf("\nStack Overflow!\n");
+    }
+    else
+    {
+        top++;
+        stack[top] = x;
+    }
+}
+
+void pop()
+{
+    int item;
+
+    if(top == -1)
+    {
+        printf("Stack Underflow!\n");
+    }
+    else
+    {
+        item = stack[top];
+        top--;
+        printf("%d has been popped from the stack\n", item);
+    }   
+}
+
+
+void peek()
+{
+    if (top == -1)
+    {
+        printf("Stack is Empty!\n");
+    }
+    else
+    {
+        printf("The topmost element of the stack is: %d\n", stack[top]);
+    }
+}
+
+void display()
+{
+    if(top == -1)
+    {
+        printf("Stack is EMPTY!\n");
+    }
+    
+    else
+    {
+        int i;
+        for ( i = top; i >= 0; i--)
+        {
+            printf("%d\n", stack[i]);
+        }
+    }
+}
+
+int main()
+{
+    int c;
+
+    do
+    {
+        printf("Enter your choice:-\n1. Push\n2. Pop\n3. Peek\n4. Display\nPress 0 to Exit.\n");
+        scanf("%d", &c);
+        switch (c)
+        {
+        case 1:
+            push();
+            break;
+
+        case 2:
+            pop();
+            break;
+
+        case 3:
+            peek();
+            break;
+
+        case 4:
+            display();
+            break;
+        
+        default:
+        printf("Invalid Choice!\n");
+            break;
+        }
+    } while (c != 0 && c >= 1 && c <= 4);
+    
+    return 0;
+}
